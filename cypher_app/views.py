@@ -3,28 +3,13 @@ from django.contrib import messages
 
 from .forms import InputTextForm
 
-# Import cipher algorithms from ciphers package.
-from cypher_app.ciphers.binary import Binary
-from cypher_app.ciphers.caesar_cipher import CaesarCipher
-from cypher_app.ciphers.morse_code import MorseCode
-from cypher_app.ciphers.pig_latin import PigLatin
-
-# def index(request):
-# 	"""Home page for Cypher."""
-# 	if request.method == 'POST':
-# 		form = InputTextForm(request.POST)
-# 		if form.is_valid():
-# 			input_text = form.cleaned_data['input_text']
-# 			ciphered_text = MorseCode(input_text).cipher()
-# 			return render(request, 'cypher_app/index.html', {
-# 					'form': form,
-# 					'ciphered_text': ciphered_text,
-# 				},
-# 			)
-# 	else:
-# 		form = InputTextForm()
-
-# 	return render(request, 'cypher_app/index.html', {'form': form})
+# Import cipher algorithms from local ciphers package.
+from cypher_app.ciphers import (
+	binary, 
+	caesar_cipher, 
+	morse_code, 
+	pig_latin,
+)
 
 
 def index(request):
@@ -32,13 +17,11 @@ def index(request):
 		form = InputTextForm(request.POST)
 
 		if form.is_valid():
+			# Cipher text from user.
 			input_text = form.cleaned_data['input_text']
-			ciphered_text = Binary(input_text).cipher()
+			ciphered_text = morse_code.MorseCode(input_text).cipher()
 
-			# return render(request, 'cypher_app/index.html', {
-			# 		'form': form,
-			# 		'ciphered_text': ciphered_text,
-			# 	})
+			# Redirect user to page with ciphered text.
 			messages.add_message(request, messages.INFO, ciphered_text)
 			return redirect('/',)
 	else:
