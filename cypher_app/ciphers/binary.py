@@ -11,7 +11,7 @@ class Binary:
 		self.text = text
 
 
-	def cihper(self):
+	def cipher(self):
 		"""Ciphers a string to Binary.
 
 		Args:
