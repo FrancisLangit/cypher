@@ -16,6 +16,10 @@ class CaesarCipher:
     def cipher(self):
         """Ciphers text into a Caesar Cipher.
 
+        Adapted from tutorialspoint.com's "Cryptography with Python - Caesar C
+        ipher" from (https://www.tutorialspoint.com/cryptography_with_python/c
+        ryptography_with_python_caesar_cipher.htm).
+
         Args:
             None
 
