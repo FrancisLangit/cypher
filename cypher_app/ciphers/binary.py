@@ -14,6 +14,9 @@ class Binary:
 	def cipher(self):
 		"""Ciphers a string to Binary.
 
+		Adapted from geeksforgeeks.org's "Python | Convert String to Binary" f
+		-rom (https://www.geeksforgeeks.org/python-convert-string-to-binary/).
+
 		Args:
 		    None
 
@@ -26,9 +29,9 @@ class Binary:
 	def decipher(self):
 		"""Deciphers a string composed of binary values into ASCII text.
 
-		Adapted from kite.com's "How to convert binary to string in Python:" (
-		https://www.kite.com/python/answers/how-to-convert-binary-to-string-in
-		-python).
+		Adapted from kite.com's "How to convert binary to string in Python" f-
+		rom (https://www.kite.com/python/answers/how-to-convert-binary-to-stri
+		ng-in-python).
 
 		Args: 
 			None
