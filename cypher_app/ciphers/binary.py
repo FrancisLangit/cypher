@@ -37,4 +37,4 @@ class Binary:
 			str: Text deciphered from Binary to ASCII text.
 		"""
 		return ''.join(
-			[chr(int(binary, 2)) for binary in binary_string.split(" ")])
+			[chr(int(binary, 2)) for binary in self.text.split(" ")])
