@@ -11,6 +11,7 @@ class CaesarCipher:
         """Initializes attributes of CaesarCipher."""
         self.text = text
         self.key = key
+        self.key_limit = 26
 
 
     def cipher(self):
@@ -26,7 +27,7 @@ class CaesarCipher:
         Returns:
             str: Text encrypted into a Caesar Cipher
         """
-        if self.key > 26:
+        if self.key > self.key_limit:
             cipher = ""
             for i in range(len(self.text)):
                 char = self.text[i]
@@ -38,4 +39,9 @@ class CaesarCipher:
                     cipher += char
             return cipher
         else:
-            return f"Chosen right shift of {self.key} is over limit of 26."
+            return f"Chosen right shift of {self.key} is over limit of \
+            {self.key_limit}."
+
+
+    def decipher(self):
+        pass
