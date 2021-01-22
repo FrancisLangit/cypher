@@ -16,6 +16,24 @@ class CaesarCipher:
         self.key_limit = 26
 
 
+    def _cipher_char(self, char):
+        """Ciphers a single character.
+
+        Only for use with class in cipher method.
+
+        Args:
+            char: String character to be ciphered.
+
+        Returns:
+            str: Ciphered char. 
+        """
+        if char.isupper():
+            char = chr((ord(char) + self.key - 65) % 26 + 65)
+        elif char.islower():
+            char = chr((ord(char) + self.key - 97) % 26 + 97)
+        return char
+
+
     def cipher(self):
         """Ciphers text into a Caesar Cipher.
 
@@ -32,16 +50,10 @@ class CaesarCipher:
         if not self.key > self.key_limit:
             cipher = ""
             for i in range(len(self.text)):
-                char = self.text[i]
-                if char.isupper():
-                    cipher += chr((ord(char) + self.key - 65) % 26 + 65)
-                elif char.islower():
-                    cipher += chr((ord(char) + self.key - 97) % 26 + 97)
-                else:
-                    cipher += char
+                cipher += self._cipher_char(self.text[i])
             return cipher
         else:
-            return f"Chosen key of {self.key} is over limit of {self.key_limit}."
+            return f"Shift of {self.key} is over limit of {self.key_limit}."
 
 
     def _decipher_char(self, char):
