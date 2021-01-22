@@ -19,7 +19,11 @@ class PigLatin:
     def _cipher_word(self, word):
         """Ciphers a word into Pig Latin. 
 
-        Meant for use only within class in its translate() method.
+        Adapated from 301_Moved_Permantently's revised translate_to_piglatin f
+        unction in (https://codereview.stackexchange.com/questions/127871/pig-
+        latin-translator-in-python).
+
+        Meant for use only within class in its cipher method.
         
         Args:
             word (str): Word to be ciphered into Pig Latin.
@@ -27,12 +31,11 @@ class PigLatin:
         Returns:
             str: Word ciphered into Pig Latin.
         """
-        if word[0] in self.vowels or not any(c in word for c in self.vowels):
-            return word + "yay"
+        first_letter, *remaining_letters = word
+        if first_letter in 'aeiouAEIOU':
+            return word + 'yay'
         else:
-            first_vowel = re.search(r'[aeiouAEIOU]', word).group()
-            first_consonants = re.search(r'[^aeiouAEIOU]{1,}', word).group()
-            return word[word.find(first_vowel):] + first_consonants + "ay"
+            return ''.join(remaining_letters) + first_letter + 'ay'
 
 
     def cipher(self):
@@ -53,3 +56,7 @@ class PigLatin:
             else:
                 cipher += partition
         return cipher
+
+
+pg = PigLatin("Ears hurtin!")
+print(pg.cipher())
