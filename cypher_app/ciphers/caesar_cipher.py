@@ -44,23 +44,42 @@ class CaesarCipher:
             return f"Chosen key of {self.key} is over limit of {self.key_limit}."
 
 
-    def decipher(self):
-        deciphered_text = ''
+    def _decipher_char(self, char):
+        """Deciphers a single character in a Caesar Cipher.
 
+        Meant for use within class only, particularly in decipher method.
+
+        Args:
+            char: String character to be deciphered.
+
+        Returns:
+            str: Deciphered char. 
+        """
+        if char.isupper():
+            alphabet = string.ascii_uppercase
+        else:
+            alphabet = string.ascii.lowercase
+        position = alphabet.find(char)
+        new_position = (position - self.key) % 26
+        return alphabet[new_position]
+
+
+    def decipher(self):
+        """Deciphers a Caesar Cipher based on key provided.
+
+        Adapted from GitHub user A08's "cc_decrypt.py" from (https://gist.gith
+        ub.com/AO8/3a89ba7c8f032c7a1ff505baa3ce970e).
+
+        Args:
+            None
+
+        Returns:
+            str: Deciphered text. 
+        """
+        deciphered_text = ''
         for char in self.text:
             if char.isalpha():
-                if char.isupper():
-                    alphabet = string.ascii_uppercase
-                else:
-                    alphabet = string.ascii_lowercase
-                position = alphabet.find(char)
-                new_position = (position - self.key) % 26
-                new_character = alphabet[new_position]
-                deciphered_text += new_character
+                deciphered_text += self._decipher_char(char)
             else:
                 deciphered_text += char
-
         return deciphered_text
-
-text = CaesarCipher("GUVF VF ZL FRPERG ZRFFNTR.".lower(), 13)
-print(text.decipher())
