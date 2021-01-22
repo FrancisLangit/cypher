@@ -57,3 +57,25 @@ class MorseCode:
           except KeyError as e:
                return f'Error. Cannot translate {e} to morse code.'
           return cipher
+
+
+
+     def decipher(self):
+          """Deciphers Morse Code to English.
+
+          Args:
+              None
+
+          Returns:
+              str: Text deciphered into English.
+          """
+          deciphered_text = ""
+          for morse_code in self.text.split():
+               if morse_code in self.morse_code_dict.values():
+                    ascii_chars = list(self.morse_code_dict.keys())
+                    morse_codes = list(self.morse_code_dict.values())
+                    deciphered_text += (
+                         ascii_chars[morse_codes.index(morse_code)])
+               else:
+                    deciphered_text += " "
+          return deciphered_text
