@@ -1,3 +1,5 @@
+import string
+
 class CaesarCipher:
     """Represents text to be ciphered into a Caesar Cipher.
 
@@ -43,26 +45,22 @@ class CaesarCipher:
 
 
     def decipher(self):
-        letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        deciphered_text = ''
 
-        for key in range(26):
-            translated = ''
-
-            for char in self.text:
-                if char in letters:
-                    num = letters.find(char)
-                    num -= key
-
-                    if num < 0:
-                        num += len(letters)
-
-                    translated += letters[num]
-
+        for char in self.text:
+            if char.isalpha():
+                if char.isupper():
+                    alphabet = string.ascii_uppercase
                 else:
-                    translated += symbol
+                    alphabet = string.ascii_lowercase
+                position = alphabet.find(char)
+                new_position = (position - self.key) % 26
+                new_character = alphabet[new_position]
+                deciphered_text += new_character
+            else:
+                deciphered_text += char
 
-        print(f'Key #{key}: {translated}')
+        return deciphered_text
 
-
-text = CaesarCipher("hello world", 27)
-print(text.cipher())
+text = CaesarCipher("GUVF VF ZL FRPERG ZRFFNTR.".lower(), 13)
+print(text.decipher())
