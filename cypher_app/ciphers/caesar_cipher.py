@@ -27,7 +27,7 @@ class CaesarCipher:
         Returns:
             str: Text encrypted into a Caesar Cipher
         """
-        if self.key > self.key_limit:
+        if not self.key > self.key_limit:
             cipher = ""
             for i in range(len(self.text)):
                 char = self.text[i]
@@ -39,9 +39,30 @@ class CaesarCipher:
                     cipher += char
             return cipher
         else:
-            return f"Chosen right shift of {self.key} is over limit of \
-            {self.key_limit}."
+            return f"Chosen key of {self.key} is over limit of {self.key_limit}."
 
 
     def decipher(self):
-        pass
+        letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+        for key in range(26):
+            translated = ''
+
+            for char in self.text:
+                if char in letters:
+                    num = letters.find(char)
+                    num -= key
+
+                    if num < 0:
+                        num += len(letters)
+
+                    translated += letters[num]
+
+                else:
+                    translated += symbol
+
+        print(f'Key #{key}: {translated}')
+
+
+text = CaesarCipher("hello world", 27)
+print(text.cipher())
