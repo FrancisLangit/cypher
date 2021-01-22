@@ -26,13 +26,16 @@ class CaesarCipher:
         Returns:
             str: Text encrypted into a Caesar Cipher
         """
-        cipher = ""
-        for i in range(len(self.text)):
-            char = self.text[i]
-            if char.isupper():
-                cipher += chr((ord(char) + self.key - 65) % 26 + 65)
-            elif char.islower():
-                cipher += chr((ord(char) + self.key - 97) % 26 + 97)
-            else:
-                cipher += char
-        return cipher
+        if self.key > 26:
+            cipher = ""
+            for i in range(len(self.text)):
+                char = self.text[i]
+                if char.isupper():
+                    cipher += chr((ord(char) + self.key - 65) % 26 + 65)
+                elif char.islower():
+                    cipher += chr((ord(char) + self.key - 97) % 26 + 97)
+                else:
+                    cipher += char
+            return cipher
+        else:
+            return f"Chosen right shift of {self.key} is over limit of 26."
