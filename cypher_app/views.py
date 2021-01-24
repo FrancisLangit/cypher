@@ -1,40 +1,25 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from .forms import InputTextForm
+from .forms import CaesarCipherForm
 
-# Import cipher algorithms from local ciphers package.
-from cypher_app.ciphers import (
-	binary, 
-	caesar_cipher, 
-	morse_code, 
-	pig_latin,
-)
-
-# Cipher choices presented to user and their actual modules. 
-CIPHERS = {
-	"Binary": binary.Binary,
-	"Caesar Cipher": caesar_cipher.CaesarCipher,
-	"Morse Code": morse_code.MorseCode,
-	"Pig Latin": pig_latin.PigLatin,
-}
+# Import CaesarCipher class from local ciphers package.
+from cypher_app.ciphers.caesar_cipher import CaesarCipher
 
 
 def index(request):
-	return redirect('/app')
+	return redirect('/caesar_cipher')
 
 
-def app(request):
+def caesar_cipher(request):
 	if request.method == 'POST':
-		form = InputTextForm(request.POST)
+		form = CaesarCipherForm(request.POST)
 		if form.is_valid():
-			# Cipher user's text based on choice of cipher.
-			cipher = CIPHERS[form.cleaned_data['cipher']]
-			ciphered_text = cipher(form.cleaned_data['text']).cipher()
-
-			# Redirect user to app page with ciphered text.
+			ciphered_text = CaesarCipher(
+				form.cleaned_data['text'], 
+				form.cleaned_data['key'],).cipher()
 			messages.add_message(request, messages.INFO, ciphered_text)
-			return redirect('/app')
+		return redirect('/caesar_cipher')
 	else:
-		form = InputTextForm()
-	return render(request, 'cypher_app/app.html', {'form': form})
+		form = CaesarCipherForm(request.POST)
+	return render(request, 'cypher_app/caesar_cipher.html', {'form': form})

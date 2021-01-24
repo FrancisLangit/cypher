@@ -6,7 +6,9 @@ from . import views
 
 app_name = 'cypher_app'
 urlpatterns = [
-	# Home page
+	# Home
 	path('', views.index, name='index'),
-	path('app', views.app, name='app'),
+
+	# Cipher Pages
+	path('caesar_cipher', views.caesar_cipher, name='caesar_cipher')
 ]
