@@ -1,0 +1,11 @@
+<h1>Cypher - Other Ciphers</h1>
+
+<form action="others" method="post">
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" value="Submit">
+</form>
+
+{% for message in messages %}
+	{{ message }}
+{% endfor %}

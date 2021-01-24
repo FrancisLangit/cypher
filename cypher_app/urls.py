@@ -10,5 +10,6 @@ urlpatterns = [
 	path('', views.index, name='index'),
 
 	# Cipher Pages
-	path('caesar_cipher', views.caesar_cipher, name='caesar_cipher')
+	path('app', views.app, name='app'),
+	path('others', views.others, name='others'),
 ]
