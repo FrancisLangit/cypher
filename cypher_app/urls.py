@@ -11,5 +11,5 @@ urlpatterns = [
 
 	# Cipher Pages
 	path('app', views.app, name='app'),
-	path('others', views.others, name='others'),
+	path('app/others', views.others, name='others'),
 ]
