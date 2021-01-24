@@ -56,11 +56,3 @@ class PigLatin:
             else:
                 cipher += partition
         return cipher
-
-
-    def decipher_word(word):
-        if word.endswith('yay'):
-            return word[:-3]
-        else:
-            *remaining_letters, last_letter_1, a, y = word
-            return last_letter_1 + ''.join(remaining_letters)
