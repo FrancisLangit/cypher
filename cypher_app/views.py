@@ -13,6 +13,10 @@ from cypher_app.ciphers import (
 
 
 def index(request):
+	return redirect('/app')
+
+
+def app(request):
 	if request.method == 'POST':
 		form = InputTextForm(request.POST)
 
@@ -23,7 +27,7 @@ def index(request):
 
 			# Redirect user to page with ciphered text.
 			messages.add_message(request, messages.INFO, ciphered_text)
-			return redirect('/',)
+			return redirect('/app')
 	else:
 		form = InputTextForm()
-	return render(request, 'cypher_app/index.html', {'form': form})
+	return render(request, 'cypher_app/app.html', {'form': form})
