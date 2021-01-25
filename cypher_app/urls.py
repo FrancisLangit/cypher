@@ -9,7 +9,6 @@ urlpatterns = [
 	# Home
 	path('', views.index, name='index'),
 
-	# Cipher Pages
-	path('app', views.app, name='app'),
-	path('app/others', views.others, name='others'),
+	# App
+	path('app/<str:cipher_choice>/', views.app, name='app'),
 ]

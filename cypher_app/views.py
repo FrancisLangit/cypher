@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from .forms import CaesarCipherForm, OtherCiphersForm
+from .forms import CipherTextForm # CaesarCipherForm, OtherCiphersForm
 
 # Import modules from local ciphers package.
 from cypher_app.ciphers import (
@@ -14,6 +14,7 @@ from cypher_app.ciphers import (
 # Dictionary pairing OtherCiphersForm cipher choices to their modules.
 CIPHER_DICT = {
 	"binary": binary.Binary,
+	"caesar_cipher": caesar_cipher.CaesarCipher,
 	"morse_code": morse_code.MorseCode,
 	"pig_latin": pig_latin.PigLatin,
 }
@@ -27,40 +28,18 @@ def index(request):
 	return redirect('/app')
 
 
-def app(request):
+def app(request, cipher_choice):
 	"""App view of the website.
 
-	Where the user can turn their text into a Caesar Cipher.
+	Where the user can access app's ciphers.
 	"""
+	cipher_class = CIPHER_DICT[cipher_choice]
 	if request.method == 'POST':
-		form = CaesarCipherForm(request.POST)
+		form = CipherTextForm(request.POST)
 		if form.is_valid():
-			# Create CaesarCipher object with form data.
-			ciphered_text = caesar_cipher.CaesarCipher(
-				form.cleaned_data['text'], 
-				form.cleaned_data['key'],
-			).cipher()
-
-			# Append ciphered text to messages.
-			messages.add_message(request, messages.INFO, ciphered_text)
-		return redirect('/app')
-	else:
-		form = CaesarCipherForm()
-	return render(request, 'cypher_app/app.html', {'form': form})
-
-
-def others(request):
-	"""Others view of the website.
-
-	User can access the other ciphering algorithms here.
-	"""
-	if request.method == 'POST':
-		form = OtherCiphersForm(request.POST)
-		if form.is_valid():
-			cipher_class = CIPHER_DICT[form.cleaned_data['cipher_choice']]
 			ciphered_text = cipher_class(form.cleaned_data['text']).cipher()
 			messages.add_message(request, messages.INFO, ciphered_text)
-		return redirect('/app/others')
+		return redirect('cypher_app:app', cipher_choice=cipher_choice)
 	else:
-		form = OtherCiphersForm()
-	return render(request, 'cypher_app/others.html', {'form': form})
+		form = CipherTextForm()
+	return render(request, 'cypher_app/app.html', {'form': form})

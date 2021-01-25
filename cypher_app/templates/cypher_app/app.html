@@ -1,6 +1,6 @@
 <h1>Cypher</h1>
 
-<form action="app" method="post">
+<form action="{% url 'cypher_app:app' 'binary' %}" method="post">
 	{% csrf_token %}
 	{{ form }}
 	<input type="submit" value="Submit">
