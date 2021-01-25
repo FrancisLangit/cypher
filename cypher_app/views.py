@@ -25,7 +25,7 @@ def index(request):
 
 	Defaults to redirecting the user to the app page of the website.
 	"""
-	return redirect('/app')
+	return render(request, 'cypher_app/base.html')
 
 
 def app(request, cipher_choice=''):
