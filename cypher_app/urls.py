@@ -10,5 +10,6 @@ urlpatterns = [
 	path('', views.index, name='index'),
 
 	# App
-	path('app/<str:cipher_choice>/', views.app, name='app'),
+	path('app/', views.app, name='app'),
+	path('app/<str:cipher_choice>/', views.app, name='app_choice'),
 ]

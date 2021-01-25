@@ -28,18 +28,18 @@ def index(request):
 	return redirect('/app')
 
 
-def app(request, cipher_choice):
+def app(request, cipher_choice=''):
 	"""App view of the website.
 
 	Where the user can access app's ciphers.
 	"""
-	cipher_class = CIPHER_DICT[cipher_choice]
 	if request.method == 'POST':
 		form = CipherTextForm(request.POST)
 		if form.is_valid():
+			cipher_class = CIPHER_DICT[cipher_choice]
 			ciphered_text = cipher_class(form.cleaned_data['text']).cipher()
 			messages.add_message(request, messages.INFO, ciphered_text)
-		return redirect('cypher_app:app', cipher_choice=cipher_choice)
+		return redirect('cypher_app:app_choice', cipher_choice=cipher_choice)
 	else:
 		form = CipherTextForm()
 	return render(request, 'cypher_app/app.html', {'form': form})

@@ -1,10 +1,10 @@
 <h1>Cypher</h1>
 
 <nav>
-	<a href="{% url 'cypher_app:app' 'binary' %}"> Binary </a> |
-	<a href="{% url 'cypher_app:app' 'caesar_cipher' %}"> Caesar Cipher </a> |
-	<a href="{% url 'cypher_app:app' 'morse_code' %}"> Morse Code </a> |
-	<a href="{% url 'cypher_app:app' 'pig_latin' %}"> Pig Latin </a> |
+	<a href="{% url 'cypher_app:app_choice' 'binary' %}"> Binary </a> |
+	<a href="{% url 'cypher_app:app_choice' 'caesar_cipher' %}"> Caesar Cipher </a> |
+	<a href="{% url 'cypher_app:app_choice' 'morse_code' %}"> Morse Code </a> |
+	<a href="{% url 'cypher_app:app_choice' 'pig_latin' %}"> Pig Latin </a> |
 </nav>
 
 <form action="{{ request.path }}" method="post">
