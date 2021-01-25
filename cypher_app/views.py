@@ -28,7 +28,7 @@ def index(request):
 	return render(request, 'cypher_app/base.html')
 
 
-def app(request, cipher_choice=''):
+def app(request, cipher_choice):
 	"""App view of the website.
 
 	Where the user can access app's ciphers.
@@ -41,5 +41,8 @@ def app(request, cipher_choice=''):
 			messages.add_message(request, messages.INFO, ciphered_text)
 		return redirect('cypher_app:app', cipher_choice=cipher_choice)
 	else:
-		form = CipherTextForm()
-	return render(request, 'cypher_app/app.html', {'form': form})
+		context = {
+			'form': CipherTextForm(),
+			'cipher_choice': cipher_choice,
+		}
+	return render(request, 'cypher_app/app.html', context)

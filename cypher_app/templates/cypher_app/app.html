@@ -4,7 +4,11 @@
 
 	<form action="{{ request.path }}" method="post">
 		{% csrf_token %}
-		{{ form }}
+		{{ form.text.label_tag }} {{ form.text }}
+
+		{% if cipher_choice == "caesar_cipher" %}
+			{{ form.key.label_tag }} {{ form.key }}
+		{% endif %}
 		<input type="submit" value="Submit">
 	</form>
 
