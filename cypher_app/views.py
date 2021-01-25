@@ -36,8 +36,7 @@ def app(request, cipher_choice):
 	if request.method == 'POST':
 		form = CipherTextForm(request.POST)
 		if form.is_valid():
-			cipher_class = CIPHER_DICT[cipher_choice]
-			ciphered_text = cipher_class(form.cleaned_data['text']).cipher()
+			ciphered_text = cipher_text(cipher_choice, form)
 			messages.add_message(request, messages.INFO, ciphered_text)
 		return redirect('cypher_app:app', cipher_choice=cipher_choice)
 	else:
@@ -46,3 +45,13 @@ def app(request, cipher_choice):
 			'cipher_choice': cipher_choice,
 		}
 	return render(request, 'cypher_app/app.html', context)
+
+
+def cipher_text(cipher_choice, form):
+	cipher_class = CIPHER_DICT[cipher_choice]
+	if cipher_choice == 'caesar_cipher':
+		return cipher_class(
+			form.cleaned_data['text'], 
+			form.cleaned_data['key']).cipher()
+	else:
+		return cipher_class(form.cleaned_data['text']).cipher()
