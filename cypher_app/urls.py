@@ -7,9 +7,8 @@ from . import views
 app_name = 'cypher_app'
 urlpatterns = [
 	# Home
-	path('', views.index, name='index'),
+	path('app', views.index, name='index'),
 
 	# App
-	path('app/', views.app, name='app'),
-	path('app/<str:cipher_choice>/', views.app, name='app_choice'),
+	path('app/<str:cipher_choice>/', views.app, name='app'),
 ]

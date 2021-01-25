@@ -39,7 +39,7 @@ def app(request, cipher_choice=''):
 			cipher_class = CIPHER_DICT[cipher_choice]
 			ciphered_text = cipher_class(form.cleaned_data['text']).cipher()
 			messages.add_message(request, messages.INFO, ciphered_text)
-		return redirect('cypher_app:app_choice', cipher_choice=cipher_choice)
+		return redirect('cypher_app:app', cipher_choice=cipher_choice)
 	else:
 		form = CipherTextForm()
 	return render(request, 'cypher_app/app.html', {'form': form})
