@@ -60,7 +60,7 @@ def others(request):
 			cipher_class = CIPHER_DICT[form.cleaned_data['cipher_choice']]
 			ciphered_text = cipher_class(form.cleaned_data['text']).cipher()
 			messages.add_message(request, messages.INFO, ciphered_text)
-		return redirect('app/others')
+		return redirect('/app/others')
 	else:
 		form = OtherCiphersForm()
 	return render(request, 'cypher_app/others.html', {'form': form})
