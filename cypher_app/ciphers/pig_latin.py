@@ -71,14 +71,14 @@ class PigLatin:
         Returns:
             str: Ciphered or deciphered text.
         """
-        cipher = ""
+        output = ""
         for text_partition in self.text_partitions:
             # Only translate text_partition if alphabetical.
             if text_partition.isalpha():
-                cipher += function(text_partition)
+                output += function(text_partition)
             else:
-                cipher += text_partition
-        return cipher
+                output += text_partition
+        return output
 
 
     def cipher(self):
