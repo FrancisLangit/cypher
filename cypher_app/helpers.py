@@ -1,3 +1,5 @@
+"""Helpers module."""
+
 # Import modules from local ciphers package.
 from cypher_app.ciphers import (
 	binary,
@@ -25,8 +27,27 @@ def cipher_text(cipher_choice, form):
 	"""
 	cipher_class = CIPHER_DICT[cipher_choice]
 	if cipher_choice == 'caesar_cipher':
+		return _cipher_text_into_caesar_cipher(cipher_class, form)
+	else:
+		return cipher_class(form.cleaned_data['text']).cipher()
+
+def _cipher_text_into_caesar_cipher(cipher_class, form):
+	"""Ciphers text from Django form object into a Caesar Cipher.
+
+	Uses a try-except to catch TypeError exceptions resulting from there not b
+	eing a "key" IntegerField input from user. 
+
+	To be used within helpers.py module only.
+
+	Args:
+		form: Django form objects that user fills up in page.
+	Returns:
+		str: Ciphered text (or error if TypeError detected). 
+	"""
+	try:
 		return cipher_class(
 			form.cleaned_data['text'], 
 			form.cleaned_data['key']).cipher()
-	else:
-		return cipher_class(form.cleaned_data['text']).cipher()
+	except TypeError:
+		return 'No key input. Please indicate key.'
+
