@@ -3,7 +3,8 @@ from django.contrib import messages
 
 from .forms import CipherTextForm
 
-import cypher_app.helpers
+import cypher_app.helpers as helpers
+
 
 def index(request):
 	"""Index view of the website. 
@@ -11,6 +12,7 @@ def index(request):
 	Defaults to redirecting the user to the app page of the website.
 	"""
 	return render(request, 'cypher_app/base.html')
+
 
 def app(request, cipher_choice):
 	"""App view of the website.
@@ -20,13 +22,10 @@ def app(request, cipher_choice):
 	if request.method == 'POST':
 		form = CipherTextForm(request.POST)
 		if form.is_valid():
-			ciphered_text = cypher_app.helpers.cipher_text(
-				cipher_choice, form)
+			ciphered_text = helpers.cipher_text(cipher_choice, form)
 			messages.add_message(request, messages.INFO, ciphered_text)
 		return redirect('cypher_app:app', cipher_choice=cipher_choice)
 	else:
-		context = {
+		return render(request, 'cypher_app/app.html', {
 			'form': CipherTextForm(),
-			'cipher_choice': cipher_choice,
-		}
-	return render(request, 'cypher_app/app.html', context)
+			'cipher_choice': cipher_choice,})

@@ -16,6 +16,7 @@ CIPHER_DICT = {
 	"pig_latin": pig_latin.PigLatin,
 }
 
+
 def cipher_text(cipher_choice, form):
 	"""Ciphers text from Django form object.
 	
@@ -30,6 +31,7 @@ def cipher_text(cipher_choice, form):
 		return _cipher_text_into_caesar_cipher(cipher_class, form)
 	else:
 		return cipher_class(form.cleaned_data['text']).cipher()
+
 
 def _cipher_text_into_caesar_cipher(cipher_class, form):
 	"""Ciphers text from Django form object into a Caesar Cipher.

@@ -4,6 +4,7 @@ from django.urls import path
 
 from . import views
 
+
 app_name = 'cypher_app'
 urlpatterns = [
 	# Home
