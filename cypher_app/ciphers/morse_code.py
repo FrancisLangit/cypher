@@ -34,7 +34,10 @@ class MorseCode:
                "(": '-.--.' ,      ')': '-.--.-' ,      '&': '.-...' ,
                ":": '---...',      ';': '-.-.-.' ,      '=': '-...-' ,
                '+': '.-.-.' ,      '-': '-....-' ,      '_': '..--.-',
-               '"': '.-..-.',      '$': '...-..-',      '@': '.--.-.' 
+               '"': '.-..-.',      '$': '...-..-',      '@': '.--.-.',
+
+               # Space
+               ' ': '.......',  
           } 
 
 
@@ -53,7 +56,7 @@ class MorseCode:
                     if char != ' ': 
                          cipher += self.morse_code_dict[char] + ' '
                     else: 
-                         cipher += ' '
+                         cipher += '....... '
           except KeyError as e:
                return f'Error. Cannot translate {e} to morse code.'
           return cipher
