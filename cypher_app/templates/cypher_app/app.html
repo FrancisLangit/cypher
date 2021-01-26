@@ -9,6 +9,8 @@
 		{% if cipher_choice == "caesar_cipher" %}
 			{{ form.key.label_tag }} {{ form.key }}
 		{% endif %}
+
+		{{ form.operation.label_tag }} {{ form.operation }}
 		<input type="submit" value="Submit">
 	</form>
 
