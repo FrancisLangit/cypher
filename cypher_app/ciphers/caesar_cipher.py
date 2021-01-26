@@ -70,7 +70,7 @@ class CaesarCipher:
         if char.isupper():
             alphabet = string.ascii_uppercase
         else:
-            alphabet = string.ascii.lowercase
+            alphabet = string.ascii_lowercase
         position = alphabet.find(char)
         new_position = (position - self.key) % 26
         return alphabet[new_position]
