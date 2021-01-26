@@ -13,6 +13,8 @@ class PigLatin:
     def __init__(self, text):
         """Initializes attributes of PigLatin."""
         self.text = text
+        self.text_partitions = re.compile(
+            r"[\w']+|[.,!?;]|\s").findall(self.text)
         self.vowels = 'aeiouAEIOU'
 
 
@@ -60,21 +62,44 @@ class PigLatin:
             return last_letter + ''.join(remaining_letters)
 
 
+    def _output_text(self, function):
+        """Ciphers or deciphers self.text based on "function" argument.
+
+        Args:
+            function: Function object. Either _cipher_word or _decipher_word.
+
+        Returns:
+            str: Ciphered or deciphered text.
+        """
+        cipher = ""
+        for text_partition in self.text_partitions:
+            # Only translate text_partition if alphabetical.
+            if text_partition.isalpha():
+                cipher += function(text_partition)
+            else:
+                cipher += text_partition
+        return cipher
+
+
     def cipher(self):
-        """Ciphers self.text into Pig Latin.
+        """Returns ciphered text.
 
         Args:
             None
 
         Returns:
-            str: Text ciphered into Pig Latin
+            str: Ciphered text.
         """
-        cipher = ""
-        partitions = re.compile(r"[\w']+|[.,!?;]|\s").findall(self.text)
-        for partition in partitions:
-            # Only translate partition if made of alphabetical characters.
-            if partition.isalpha():
-                cipher += self._cipher_word(partition)
-            else:
-                cipher += partition
-        return cipher
+        return self._output_text(self._cipher_word)
+
+
+    def decipher(self):
+        """Returns deciphered text.
+
+        Args:
+            None
+
+        Returns:
+            str: Deciphered text.
+        """
+        return self._output_text(self._decipher_word)
