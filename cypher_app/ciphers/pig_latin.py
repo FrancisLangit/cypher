@@ -23,7 +23,7 @@ class PigLatin:
         unction in (https://codereview.stackexchange.com/questions/127871/pig-
         latin-translator-in-python).
 
-        Meant for use only within class in its cipher method.
+        Meant for use with class only.
         
         Args:
             word (str): Word to be ciphered into Pig Latin.
@@ -36,6 +36,28 @@ class PigLatin:
             return word + 'yay'
         else:
             return ''.join(remaining_letters) + first_letter + 'ay'
+
+
+    def _decipher_word(self, word):
+        """Deciphers a word from Pig Latin to English. 
+
+        Adapated from 301_Moved_Permantently's revised translate_to_english fu
+        nction in (https://codereview.stackexchange.com/questions/127871/pig-l
+        atin-translator-in-python).
+
+        Meant for use with class only.
+        
+        Args:
+            word (str): Word to be deciphered into English.
+
+        Returns:
+            str: Word deciphered into English.
+        """
+        if word.endswith('yay'):
+            return word[:-3]
+        else:
+            *remaining_letters, last_letter, a, y = word
+            return last_letter + ''.join(remaining_letters)
 
 
     def cipher(self):
