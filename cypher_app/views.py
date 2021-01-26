@@ -22,8 +22,8 @@ def app(request, cipher_choice):
 	if request.method == 'POST':
 		form = CipherTextForm(request.POST)
 		if form.is_valid():
-			ciphered_text = helpers.cipher_text(cipher_choice, form)
-			messages.add_message(request, messages.INFO, ciphered_text)
+			output_text = helpers.parse_text(cipher_choice, form)
+			messages.add_message(request, messages.INFO, output_text)
 		return redirect('cypher_app:app', cipher_choice=cipher_choice)
 	else:
 		return render(request, 'cypher_app/app.html', {

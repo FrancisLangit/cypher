@@ -17,20 +17,27 @@ CIPHER_DICT = {
 }
 
 
-def cipher_text(cipher_choice, form):
-	"""Ciphers text from Django form object.
+def parse_text(cipher_choice, form):
+	"""Parses text from Django form object.
 	
 	Args:
 		cipher_choice (str): Choice of cipher. Based on CIPHER_DICT keys.
 		form: Django form object that user fills up in page.
 	Returns: 
-		str: Ciphered text.
+		str: Output text. Either ciphered or deciphered dependent on user's ch
+		oice of operation.
 	"""
 	cipher_class = CIPHER_DICT[cipher_choice]
 	if cipher_choice == 'caesar_cipher':
-		return _text_to_caesar_cipher(cipher_class, form)
+		cipher_object = cipher_class(
+			form.cleaned_data['text'], form.cleaned_data['key'])
 	else:
-		return cipher_class(form.cleaned_data['text']).cipher()
+		cipher_object = cipher_class(form.cleaned_data['text'])
+
+	if form.cleaned_data['operation'] == 'cipher':
+		return cipher_object.cipher()
+	else:
+		return cipher_object.decipher()
 
 
 def _text_to_caesar_cipher(cipher_class, form):
