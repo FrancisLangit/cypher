@@ -28,12 +28,12 @@ def cipher_text(cipher_choice, form):
 	"""
 	cipher_class = CIPHER_DICT[cipher_choice]
 	if cipher_choice == 'caesar_cipher':
-		return _cipher_text_into_caesar_cipher(cipher_class, form)
+		return _text_to_caesar_cipher(cipher_class, form)
 	else:
 		return cipher_class(form.cleaned_data['text']).cipher()
 
 
-def _cipher_text_into_caesar_cipher(cipher_class, form):
+def _text_to_caesar_cipher(cipher_class, form):
 	"""Ciphers text from Django form object into a Caesar Cipher.
 
 	Uses a try-except to catch TypeError exceptions resulting from there not b
