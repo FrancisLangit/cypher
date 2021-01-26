@@ -38,25 +38,3 @@ def parse_text(cipher_choice, form):
 		return cipher_object.cipher()
 	else:
 		return cipher_object.decipher()
-
-
-def _text_to_caesar_cipher(cipher_class, form):
-	"""Ciphers text from Django form object into a Caesar Cipher.
-
-	Uses a try-except to catch TypeError exceptions resulting from there not b
-	eing a "key" IntegerField input from user. 
-
-	To be used within helpers.py module only.
-
-	Args:
-		form: Django form objects that user fills up in page.
-	Returns:
-		str: Ciphered text (or error if TypeError detected). 
-	"""
-	try:
-		return cipher_class(
-			form.cleaned_data['text'], 
-			form.cleaned_data['key']).cipher()
-	except TypeError:
-		return 'No key input. Please indicate key.'
-
