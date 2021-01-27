@@ -1,0 +1,30 @@
+<div class="card">
+
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+
+    {% for cipher_link, cipher_name in ciphers.items %}
+      <li class="nav-item">
+        <a 
+        	class="
+			{% if request.path == cipher_link %}
+      			nav-item nav-link active
+      		{% else %}
+      			nav-item nav-link
+      		{% endif %}" 
+        	href="{% url 'cypher_app:app' cipher_link %}">
+        		{{ cipher_name }}
+        </a>
+      </li>
+    {% endfor %}
+
+    </ul>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+
+</div>

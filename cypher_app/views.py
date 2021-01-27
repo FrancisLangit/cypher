@@ -8,7 +8,14 @@ import cypher_app.helpers as helpers
 
 def index(request):
 	"""Index page. """
-	return render(request, 'cypher_app/index.html')
+	ciphers = {
+		'binary': 'Binary',
+		'caesar_cipher': 'Caesar Cipher',
+		'morse_code': 'Morse Code',
+		'pig_latin': 'Pig Latin',
+	}
+	context = {'ciphers': ciphers}
+	return render(request, 'cypher_app/index.html', context)
 
 
 def app(request, cipher_choice):
