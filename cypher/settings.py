@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'cypher_app',
 
     # Third Party Apps
-    'boostrap4',
+    'bootstrap4',
 
     # Default Django Apps
     'django.contrib.admin',
