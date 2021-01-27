@@ -7,7 +7,7 @@ import cypher_app.helpers as helpers
 
 
 def index(request):
-	"""Index view of the website. 
+	"""Index page. 
 
 	Defaults to redirecting the user to the app page of the website.
 	"""
@@ -15,7 +15,7 @@ def index(request):
 
 
 def app(request, cipher_choice):
-	"""App view of the website.
+	"""App page.
 
 	Where the user can access app's ciphers.
 	"""
@@ -27,5 +27,12 @@ def app(request, cipher_choice):
 		return redirect('cypher_app:app', cipher_choice=cipher_choice)
 	else:
 		return render(request, 'cypher_app/app.html', {
-			'form': CipherTextForm(),
-			'cipher_choice': cipher_choice,})
+			'form': CipherTextForm(), 'cipher_choice': cipher_choice,})
+
+
+def about(request):
+	"""About page.
+
+	User can learn about the background of the project here.
+	"""
+	return render(request, 'cypher_app/about.html')
