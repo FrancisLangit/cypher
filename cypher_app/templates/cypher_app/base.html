@@ -33,26 +33,34 @@
 	    <div class="navbar-nav">
 	      <a 
 	      	class="
-				{% if request.path == '/about' %}
+				{% if request.path == '/about/' %}
 	      			nav-item nav-link active
 	      		{% else %}
 	      			nav-item nav-link
 	      		{% endif %}
       		" 
-	      	href="#">
+	      	href="{% url 'cypher_app:about' %}">
 	      	About
 	      </a>
 	    </div>
 	  </div>
 	</nav>
 
-	<nav>
-		<a href="{% url 'cypher_app:app' 'binary' %}"> Binary </a> |
-		<a href="{% url 'cypher_app:app' 'caesar_cipher' %}"> Caesar Cipher </a> |
-		<a href="{% url 'cypher_app:app' 'morse_code' %}"> Morse Code </a> |
-		<a href="{% url 'cypher_app:app' 'pig_latin' %}"> Pig Latin </a> |
-	</nav>
-
 	{% block body %}
 	{% endblock %}
+
+	<nav>
+		<a href="{% url 'cypher_app:app' 'binary' %}"> 
+			Binary 
+		</a> |
+		<a href="{% url 'cypher_app:app' 'caesar_cipher' %}"> 
+			Caesar Cipher 
+		</a> |
+		<a href="{% url 'cypher_app:app' 'morse_code' %}"> 
+			Morse Code 
+		</a> |
+		<a href="{% url 'cypher_app:app' 'pig_latin' %}"> 
+			Pig Latin 
+		</a> |
+	</nav>
 </body>
