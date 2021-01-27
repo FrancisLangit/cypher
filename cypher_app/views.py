@@ -8,7 +8,7 @@ import cypher_app.helpers as helpers
 
 def index(request):
 	"""Index page. """
-	return render(request, 'cypher_app/base.html')
+	return render(request, 'cypher_app/index.html')
 
 
 def app(request, cipher_choice):
