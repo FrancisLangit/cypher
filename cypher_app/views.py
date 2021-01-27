@@ -7,10 +7,7 @@ import cypher_app.helpers as helpers
 
 
 def index(request):
-	"""Index page. 
-
-	Defaults to redirecting the user to the app page of the website.
-	"""
+	"""Index page. """
 	return render(request, 'cypher_app/base.html')
 
 
