@@ -1,11 +1,26 @@
-<h1>Cypher</h1>
+{% load bootstrap 4 %}
 
-<nav>
-	<a href="{% url 'cypher_app:app' 'binary' %}"> Binary </a> |
-	<a href="{% url 'cypher_app:app' 'caesar_cipher' %}"> Caesar Cipher </a> |
-	<a href="{% url 'cypher_app:app' 'morse_code' %}"> Morse Code </a> |
-	<a href="{% url 'cypher_app:app' 'pig_latin' %}"> Pig Latin </a> |
-</nav>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Cypher</title>
 
-{% block body %}
-{% endblock %}
+	{% bootstrap_css %}
+	{% bootstrap_javascript jquery='full' %}
+</head>
+
+<body>
+	<h1>Cypher</h1>
+
+	<nav>
+		<a href="{% url 'cypher_app:app' 'binary' %}"> Binary </a> |
+		<a href="{% url 'cypher_app:app' 'caesar_cipher' %}"> Caesar Cipher </a> |
+		<a href="{% url 'cypher_app:app' 'morse_code' %}"> Morse Code </a> |
+		<a href="{% url 'cypher_app:app' 'pig_latin' %}"> Pig Latin </a> |
+	</nav>
+
+	{% block body %}
+	{% endblock %}
+</body>
