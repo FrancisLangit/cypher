@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     # Repository Apps
     'cypher_app',
 
+    # Third Party Apps
+    'boostrap4',
+
     # Default Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
