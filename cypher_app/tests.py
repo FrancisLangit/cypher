@@ -8,9 +8,11 @@ from cypher_app.ciphers import (
 
 
 class CiphersTestCase(TestCase):
+	"""Test case for ciphering and deciphering algorithms."""
 
 
 	def setUp(self):
+		"""Method to prepare class attributes."""
 		self.short_text = "Slim!"
 		self.long_text = "The quick brown fox jumps over the lazy dog."
 		self.caesar_key = 2
@@ -23,6 +25,7 @@ class CiphersTestCase(TestCase):
 
 
 	def test_cipher(self):
+		"""Evaluates ciphering algorithms."""
 		self.assertEqual(self.cipher_binary.cipher(),
 			"1010011 1101100 1101001 1101101 100001")
 		self.assertEqual(self.cipher_caesar.cipher(),  
@@ -34,8 +37,10 @@ class CiphersTestCase(TestCase):
 
 
 	def test_decipher(self):
+		"""Evaluates deciphering algorithms."""
 		self.assertEqual(
-			binary.Binary("1010011 1101100 1101001 1101101 100001").decipher(), 
+			binary.Binary(
+				"1010011 1101100 1101001 1101101 100001").decipher(), 
 			self.short_text
 		)
 		self.assertEqual(
