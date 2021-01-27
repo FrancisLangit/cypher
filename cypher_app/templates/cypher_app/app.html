@@ -2,24 +2,54 @@
 
 {% block body %}
 
-	<form action="{{ request.path }}" method="post">
-		{% csrf_token %}
-		{{ form.text.label_tag }} {{ form.text }}
+<div class="card">
 
-		{% if cipher_choice == "caesar_cipher" %}
-			{{ form.key.label_tag }} {{ form.key }}
-		{% endif %}
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
 
-		{{ form.operation.label_tag }} {{ form.operation }}
-		<input type="submit" value="Submit">
-	</form>
+    {% for cipher_link, cipher_name in ciphers.items %}
+      <li class="nav-item">
+        <a 
+        	class="
+				{% if request.path == cipher_link %}
+	      			nav-item nav-link active
+	      		{% else %}
+	      			nav-item nav-link
+	      		{% endif %}" 
+        	href="{% url 'cypher_app:app' cipher_link %}">
+        		{{ cipher_name }}
+        </a>
+      </li>
+    {% endfor %}
 
-	{% if messages %}
-		<h1>Translation</h1>
+    </ul>
+  </div>
 
-		{% for message in messages %}
-			{{ message }}
-		{% endfor %}
-	{% endif %}
+  <div class="card-body">
+    <h5 class="card-title">Choose a cipher from the above.</h5>
+    <p class="card-text">The form below will change dependent on the cipher chosen.</p>
+
+    <form action="{{ request.path }}" method="post">
+    	{% csrf_token %}
+    	{{ form.text.label_tag }} {{ form.text }}
+
+    	{% if cipher_choice == "caesar_cipher" %}
+    		{{ form.key.label_tag }} {{ form.key }}
+    	{% endif %}
+
+    	{{ form.operation.label_tag }} {{ form.operation }}
+    	<input type="submit" value="Submit">
+    </form>
+
+    {% if messages %}
+    	<h1>Translation</h1>
+
+    	{% for message in messages %}
+    		{{ message }}
+    	{% endfor %}
+    {% endif %}
+  </div>
+
+</div>
 
 {% endblock %}

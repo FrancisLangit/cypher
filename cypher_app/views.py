@@ -7,15 +7,8 @@ import cypher_app.helpers as helpers
 
 
 def index(request):
-	"""Index page. """
-	ciphers = {
-		'binary': 'Binary',
-		'caesar_cipher': 'Caesar Cipher',
-		'morse_code': 'Morse Code',
-		'pig_latin': 'Pig Latin',
-	}
-	context = {'ciphers': ciphers}
-	return render(request, 'cypher_app/index.html', context)
+	"""Index page."""
+	return redirect('/app/binary/')
 
 
 def app(request, cipher_choice):
@@ -23,6 +16,13 @@ def app(request, cipher_choice):
 
 	Where the user can access app's ciphers.
 	"""
+	ciphers = {
+		'binary': 'Binary',
+		'caesar_cipher': 'Caesar Cipher',
+		'morse_code': 'Morse Code',
+		'pig_latin': 'Pig Latin',
+	}
+
 	if request.method == 'POST':
 		form = CipherTextForm(request.POST)
 		if form.is_valid():
@@ -31,7 +31,10 @@ def app(request, cipher_choice):
 		return redirect('cypher_app:app', cipher_choice=cipher_choice)
 	else:
 		return render(request, 'cypher_app/app.html', {
-			'form': CipherTextForm(), 'cipher_choice': cipher_choice,})
+			'form': CipherTextForm(), 
+			'cipher_choice': cipher_choice,
+			'ciphers': ciphers,
+		})
 
 
 def about(request):
