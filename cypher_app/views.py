@@ -7,7 +7,10 @@ import cypher_app.helpers as helpers
 
 
 def index(request):
-	"""Index page."""
+	"""Index.
+
+	URL with no path after domain name redirects to /app/binary/ by default.
+	"""
 	return redirect('/app/binary/')
 
 
@@ -16,25 +19,13 @@ def app(request, cipher_choice):
 
 	Where the user can access app's ciphers.
 	"""
-	ciphers = {
-		'/app/binary': 'Binary',
-		'/app/caesar_cipher': 'Caesar Cipher',
-		'/app/morse_code': 'Morse Code',
-		'/app/pig_latin': 'Pig Latin',
-	}
-
 	if request.method == 'POST':
 		form = CipherTextForm(request.POST)
 		if form.is_valid():
 			output_text = helpers.parse_text(cipher_choice, form)
 			messages.add_message(request, messages.INFO, output_text)
 		return redirect('cypher_app:app', cipher_choice=cipher_choice)
-	else:
-		return render(request, 'cypher_app/app.html', {
-			'form': CipherTextForm(), 
-			'cipher_choice': cipher_choice,
-			'ciphers': ciphers,
-		})
+	return render(request, 'cypher_app/app.html', {'form': CipherTextForm()})
 
 
 def about(request):

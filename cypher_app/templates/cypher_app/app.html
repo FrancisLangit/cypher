@@ -69,7 +69,7 @@
 
         {% bootstrap_field form.text %}
 
-        {% if cipher_choice == "caesar_cipher" %}
+        {% if request.path == "/app/caesar_cipher/" %}
             {% bootstrap_field form.key %}
         {% endif %}
 
