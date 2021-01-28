@@ -1,18 +1,39 @@
 {% extends 'cypher_app/base.html' %}
 
 {% block body %}
-	<h1>
-		About
-	</h1>
 
-	<div class="jumbotron jumbotron-fluid">
-	  <div class="container">
-	    <h1 class="display-4">
-	    	Cypher
-	    </h1>
+	<div class="jumbotron m-5">
+	  <h1 class="display-4">
+	  	Cypher
+	  </h1>
+	  <p class="lead">
+	  	Cipher and decipher text using various algorithms.
+	  </p>
+	  <hr class="my-4">
+	  <p>
+	  	Currently released on GitHub as an open-source project under an MIT License. 
+	  </p>
+	</div>
 
-	    <p class="lead">
-	    	A Django-based web-app that can cipher or decipher text to or from Binary, a Caesar Cipher, Morse Code, or Pig Latin.
+	<div class="card m-5 p-3">
+	  <div class="card-header">
+	    <h2>Frequently Asked Questions</h2>
+	  </div>
+	  <div class="card-body">
+	    <h4 class="card-title">What is Cypher?</h4>
+	    <p class="card-text">
+	    	Cypher is a Django-based web application written on Python 3. Visitors can make use of its features to encrypt English to various ciphers and vice-versa. It currently showcases ciphering algorithms that can translate to and from the following:
+	    	<ul>
+	    		<li>Binary</li>
+	    		<li>Caesar Cipher</li>
+	    		<li>Morse Code</li>
+	    		<li>Pig Latin</li>
+	    	</ul>
+	    </p>
+
+	    <h4 class="card-title">Can I contribute to the project?</h4>
+	    <p class="card-text">
+	    	You most definitely can. Please visit the project's repository on GitHub for more details. Within it you can learn more about its contributing guidelines. 
 	    </p>
 	  </div>
 	</div>
