@@ -17,10 +17,10 @@ def app(request, cipher_choice):
 	Where the user can access app's ciphers.
 	"""
 	ciphers = {
-		'binary': 'Binary',
-		'caesar_cipher': 'Caesar Cipher',
-		'morse_code': 'Morse Code',
-		'pig_latin': 'Pig Latin',
+		'/app/binary': 'Binary',
+		'/app/caesar_cipher': 'Caesar Cipher',
+		'/app/morse_code': 'Morse Code',
+		'/app/pig_latin': 'Pig Latin',
 	}
 
 	if request.method == 'POST':
