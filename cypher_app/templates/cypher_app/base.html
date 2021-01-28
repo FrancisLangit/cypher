@@ -37,6 +37,17 @@
 	    <div class="navbar-nav">
 	      <a 
 	      	class="
+				{% if request.path == '/app/binary/' %}
+	      			nav-item nav-link active
+	      		{% else %}
+	      			nav-item nav-link
+	      		{% endif %}" 
+	      	href="{% url 'cypher_app:index' %}">
+	      		Home
+	      </a>
+
+	      <a
+	      	class="
 				{% if request.path == '/about/' %}
 	      			nav-item nav-link active
 	      		{% else %}
@@ -44,7 +55,7 @@
 	      		{% endif %}" 
 	      	href="{% url 'cypher_app:about' %}">
 	      		About
-	      </a>
+	  	  </a>
 	    </div>
 	  </div>
 	</nav>
