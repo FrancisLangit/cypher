@@ -1,0 +1,53 @@
+<ul class="nav nav-pills card-header-pills">
+    <li class="nav-item">
+        <a 
+            href="{% url 'cypher_app:app' 'binary' %}"
+            class="
+                {% if request.path == '/app/binary/' %}
+                    nav-link active
+                {% else %}
+                    nav-link
+                {% endif %}">
+            Binary
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a 
+            href="{% url 'cypher_app:app' 'caesar_cipher' %}"
+            class="
+                {% if request.path == '/app/caesar_cipher/' %}
+                    nav-link active
+                {% else %}
+                    nav-link
+                {% endif %}">
+            Caesar Cipher
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a 
+            href="{% url 'cypher_app:app' 'morse_code' %}"
+            class="
+                {% if request.path == '/app/morse_code/' %}
+                    nav-link active
+                {% else %}
+                    nav-link
+                {% endif %}">
+            Morse Code
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a 
+            href="{% url 'cypher_app:app' 'pig_latin' %}"
+            class="
+                {% if request.path == '/app/pig_latin/' %}
+                    nav-link active
+                {% else %}
+                    nav-link
+                {% endif %}">
+            Pig Latin
+        </a>
+    </li>
+</ul>

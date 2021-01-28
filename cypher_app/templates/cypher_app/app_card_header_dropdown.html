@@ -1,0 +1,33 @@
+<div class="dropdown">
+  <button 
+    class="btn btn-secondary dropdown-toggle" 
+    type="button" 
+    id="dropdownMenuButton" 
+    data-toggle="dropdown" 
+    aria-haspopup="true" 
+    aria-expanded="false">
+    {{ current_cipher }}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a 
+        class="dropdown-item" 
+        href="{% url 'cypher_app:app' 'binary' %}">
+        Binary
+    </a>
+    <a 
+        class="dropdown-item" 
+        href="{% url 'cypher_app:app' 'caesar_cipher' %}">
+        Caesar Cipher
+    </a>
+    <a 
+        class="dropdown-item" 
+        href="{% url 'cypher_app:app' 'morse_code' %}">
+        Morse Code
+    </a>
+    <a 
+        class="dropdown-item" 
+        href="{% url 'cypher_app:app' 'pig_latin' %}">
+        Pig Latin
+    </a>
+  </div>
+</div>
