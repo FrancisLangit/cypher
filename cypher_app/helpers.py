@@ -1,5 +1,7 @@
 """Helpers module."""
 
+import re
+
 # Import modules from local ciphers package.
 from cypher_app.ciphers import (
 	binary,
@@ -57,3 +59,26 @@ def _create_cipher_object(cipher_choice, form):
 			form.cleaned_data['text'], form.cleaned_data['key'])
 	else:
 		return cipher_class(form.cleaned_data['text'])
+
+
+def mobile(request):
+	"""Returns True if the request object comes from a mobile device.
+
+	Adapted from bhaskarc's answer to StackOverflow post "Detect mobile device
+	s with Django and Python 3" from https://stackoverflow.com/questions/42273
+	319/detect-mobile-devices-with-django-and-python-3.
+
+	Args:
+		request: Request object from view.
+
+	Returns:
+		bool: True if request is from mobile device. False if otherwise.
+	"""
+
+	MOBILE_AGENT_RE = re.compile(
+		r".*(iphone|mobile|androidtouch)", re.IGNORECASE)
+
+	if MOBILE_AGENT_RE.match(request.META['HTTP_USER_AGENT']):
+	    return True
+	else:
+	    return False
