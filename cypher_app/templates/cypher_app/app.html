@@ -1,4 +1,5 @@
 {% extends 'cypher_app/base.html' %}
+{% load bootstrap4 %}
 
 {% block body %}
 
@@ -63,29 +64,40 @@
   </div>
 
   <div class="card-body">
-    <h5 class="card-title">Choose a cipher from the above.</h5>
-    <p class="card-text">The form below will change dependent on the cipher chosen.</p>
-
     <form action="{{ request.path }}" method="post">
     	{% csrf_token %}
-    	{{ form.text.label_tag }} {{ form.text }}
 
-    	{% if cipher_choice == "caesar_cipher" %}
-    		{{ form.key.label_tag }} {{ form.key }}
-    	{% endif %}
+        {% bootstrap_field form.text %}
 
-    	{{ form.operation.label_tag }} {{ form.operation }}
-    	<input type="submit" value="Submit">
+        {% if cipher_choice == "caesar_cipher" %}
+            {% bootstrap_field form.key %}
+        {% endif %}
+
+        {% bootstrap_field form.operation %}
+
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">
+                Submit
+            </button>
+        {% endbuttons %}
     </form>
 
-    {% if messages %}
-    	<h1>Translation</h1>
+    <hr />
 
-    	{% for message in messages %}
-    		{{ message }}
-    	{% endfor %}
-    {% endif %}
+    <h3 class="card-title">Output</h5>
+
+    <div class="alert alert-dark" role="alert">
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% else %}
+            Output text appears here.
+        {% endif %}
+    </div>
+
   </div>
 
 </div>
+
 {% endblock %}
