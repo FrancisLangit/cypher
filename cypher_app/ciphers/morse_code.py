@@ -62,6 +62,22 @@ class MorseCode:
           return cipher
 
 
+     def decipher_split_section(self, split_section):
+          """Deciphers a split section of morse code string to English.
+
+          Args:
+              split_section: Split section of self.text.split().
+
+          Returns:
+              str: Split section element deciphered into English.
+          """
+          if split_section in self.morse_code_dict.values():
+               ascii_chars = list(self.morse_code_dict.keys())
+               morse_codes = list(self.morse_code_dict.values())
+               return ascii_chars[morse_codes.index(split_section)]
+          else:
+               return " "
+
 
      def decipher(self):
           """Deciphers Morse Code to English.
@@ -73,15 +89,9 @@ class MorseCode:
               str: Text deciphered into English.
           """
           if any(char.isalnum() for char in self.text):
-               return 'Morse code to decipher must not contain alpha-numeric text.'
-
+               return ("Morse code to decipher must not contain " 
+                       "alpha-numeric text.")
           deciphered_text = ""
-          for morse_code in self.text.split():
-               if morse_code in self.morse_code_dict.values():
-                    ascii_chars = list(self.morse_code_dict.keys())
-                    morse_codes = list(self.morse_code_dict.values())
-                    deciphered_text += (
-                         ascii_chars[morse_codes.index(morse_code)])
-               else:
-                    deciphered_text += " "
+          for split_section in self.text.split():
+               deciphered_text += self.decipher_split_section(split_section)
           return deciphered_text
