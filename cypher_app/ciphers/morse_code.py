@@ -57,8 +57,8 @@ class MorseCode:
                          cipher += self.morse_code_dict[char] + ' '
                     else: 
                          cipher += '....... '
-          except KeyError as e:
-               return f'Error. Cannot translate {e} to morse code.'
+          except KeyError:
+               return 1
           return cipher
 
 

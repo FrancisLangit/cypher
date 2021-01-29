@@ -43,4 +43,4 @@ class Binary:
 			return ''.join(
 				[chr(int(binary, 2)) for binary in self.text.split(" ")])
 		except ValueError:
-			return 'Error. Could not decipher input into binary.'
+			return 1

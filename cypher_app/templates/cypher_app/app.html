@@ -15,8 +15,6 @@
 
   <div class="card-body">
     <form action="{{ request.path }}" method="post">
-        <!-- {% block card_body %} -->
-        <!-- {% endblock %} -->
 
         {% csrf_token %}
 
@@ -37,10 +35,16 @@
         <hr />
 
         <ul class="list-group">
-          {% if output_text %}
+          {% if output_text == 1 %}
+            <li class="list-group-item list-group-item-danger">
+                Error! Please review input and try again.
+            </li>
+
+          {% elif output_text %}
             <li class="list-group-item list-group-item-success">
                 {{ output_text }}
             </li>
+
           {% else %}
             <li class="list-group-item list-group-item-primary">
                 Output text appears here.
