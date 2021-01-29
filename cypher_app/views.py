@@ -32,6 +32,10 @@ def app(request, cipher_choice):
 
 
 def app_output(request, form, cipher_choice):
+	"""App output view. 
+
+	Updates app page when user submits form.
+	"""
 	context = {
 		'form': CipherTextForm(request.POST),
 		'output_text': helpers.parse_text(cipher_choice, form),
