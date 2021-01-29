@@ -24,10 +24,11 @@ def app(request, cipher_choice):
 		form = CipherTextForm(request.POST)
 		if form.is_valid():		
 			return app_output(request, form, cipher_choice)
-	return render(request, 'cypher_app/app.html', {
+	context = {
 		'form': CipherTextForm(),
 		'is_mobile': helpers.mobile(request),
-	})
+	}
+	return render(request, 'cypher_app/app.html', context)
 
 
 def app_output(request, form, cipher_choice):
