@@ -22,19 +22,22 @@ def app(request, cipher_choice):
 	"""
 	if request.method == 'POST':
 		form = CipherTextForm(request.POST)
-		if form.is_valid():
-			output_text = helpers.parse_text(cipher_choice, form)
-			messages.add_message(request, messages.INFO, output_text)
-		return redirect('cypher_app:app', cipher_choice=cipher_choice)
-	context = {
+		if form.is_valid():		
+			return app_output(request, form, cipher_choice)
+	return render(request, 'cypher_app/app_card.html', {
 		'form': CipherTextForm(),
 		'is_mobile': helpers.mobile(request),
+	})
+
+
+def app_output(request, form, cipher_choice):
+	context = {
+		'input_text': form.cleaned_data['text'],
+		'key': form.cleaned_data['key'],
+		'operation': form.cleaned_data['operation'],
+		'output_text': helpers.parse_text(cipher_choice, form),
 	}
-	return render(request, 'cypher_app/app.html', context)
-
-
-def app_output(request, cipher_choice):
-	return render(request, 'cypher_app/app_output.html')
+	return render(request, 'cypher_app/app_output.html', context)
 
 
 def about(request):
