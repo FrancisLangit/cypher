@@ -24,7 +24,7 @@ def app(request, cipher_choice):
 		form = CipherTextForm(request.POST)
 		if form.is_valid():		
 			return app_output(request, form, cipher_choice)
-	return render(request, 'cypher_app/app_card.html', {
+	return render(request, 'cypher_app/app_card_body_form.html', {
 		'form': CipherTextForm(),
 		'is_mobile': helpers.mobile(request),
 	})
@@ -37,7 +37,7 @@ def app_output(request, form, cipher_choice):
 		'operation': form.cleaned_data['operation'],
 		'output_text': helpers.parse_text(cipher_choice, form),
 	}
-	return render(request, 'cypher_app/app_output.html', context)
+	return render(request, 'cypher_app/app_card_body_output.html', context)
 
 
 def about(request):
