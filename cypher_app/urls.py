@@ -12,7 +12,7 @@ urlpatterns = [
 
 	# App Page
 	path('app/<str:cipher_choice>/', views.app, name='app'),
-
+	
 	# About Page
 	path('about/', views.about, name='about')
 ]
