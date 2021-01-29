@@ -88,7 +88,7 @@ class PigLatin:
             None
 
         Returns:
-            str: Ciphered text.
+            tuple: ([int] 0, [str] Ciphered Text) 
         """
         return self._output_text((0, self._cipher_word))
 
@@ -100,6 +100,6 @@ class PigLatin:
             None
 
         Returns:
-            str: Deciphered text.
+            tuple: ([int] 0, [str] Deciphered Text) 
         """
         return self._output_text((0, self._decipher_word))

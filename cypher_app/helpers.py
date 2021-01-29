@@ -26,8 +26,10 @@ def parse_text(cipher_choice, form):
 		cipher_choice (str): Choice of cipher. Based on CIPHER_DICT keys.
 		form: Django form object that user fills up in page.
 	Returns: 
-		str: Output text. Either ciphered or deciphered dependent on user's ch
-		oice of operation.
+		tuple: ([int] Error Code, [str] Output Text) 
+			[int] Error Code - 0 if with error. 1 without error.
+			[str] Output Text - Either ciphered or deciphered text. Can also 
+								be an error message if error encountered.
 	"""
 	# Detect if no key input from user in /app/caesar_cipher page.
 	if cipher_choice == 'caesar_cipher' and not form.cleaned_data['key']:

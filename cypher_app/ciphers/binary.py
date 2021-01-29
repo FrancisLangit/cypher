@@ -21,7 +21,7 @@ class Binary:
 		    None
 
 		Returns:
-		    str: Text ciphered into Binary
+		    tuple: ([int] 0, [str] Ciphered Text) 
 		"""
 		return (0, ' '.join(format(ord(char), 'b') for char in self.text))
 
@@ -37,7 +37,9 @@ class Binary:
 			None
 
 		Returns:
-			str: Text deciphered from Binary to ASCII text.
+			tuple: ([int] Error Code, [str] Output Text) 
+				[int] Error Code - 0 if with error. 1 without error.
+				[str] Output Text - Deciphered text or error message.
 		"""
 		try:
 			return (0, ''.join(

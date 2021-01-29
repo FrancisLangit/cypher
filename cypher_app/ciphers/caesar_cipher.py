@@ -45,7 +45,9 @@ class CaesarCipher:
             None
 
         Returns:
-            str: Text encrypted into a Caesar Cipher
+            tuple: ([int] Error Code, [str] Output Text) 
+                [int] Error Code - 0 if with error. 1 without error.
+                [str] Output Text - Ciphered text or error message.
         """
         if not self.key > self.key_limit:
             cipher = ""
@@ -86,7 +88,7 @@ class CaesarCipher:
             None
 
         Returns:
-            str: Deciphered text. 
+            tuple: ([int] 0, [str] Deciphered Text)  
         """
         deciphered_text = ''
         for char in self.text:

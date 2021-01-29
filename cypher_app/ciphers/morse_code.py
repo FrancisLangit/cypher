@@ -48,7 +48,9 @@ class MorseCode:
               None
 
           Returns:
-              str: Text ciphered into Morse Code
+              tuple: ([int] Error Code, [str] Output Text) 
+                  [int] Error Code - 0 if with error. 1 without error.
+                  [str] Output Text - Ciphered text or error message.
           """
           try:
                cipher = '' 
@@ -86,7 +88,9 @@ class MorseCode:
               None
 
           Returns:
-              str: Text deciphered into English.
+              tuple: ([int] Error Code, [str] Output Text) 
+                  [int] Error Code - 0 if with error. 1 without error.
+                  [str] Output Text - Diphered text or error message.
           """
           if any(char.isalnum() for char in self.text):
                return (1, ("Morse code to decipher must not contain " 
