@@ -1,8 +1,12 @@
-{% extends 'cypher_app/base.html' %}
+{% extends 'cypher_app/app.html' %}
 {% load bootstrap4 %}
 
-{% block body %}
+{% block card_body %}
 
-<h1> Hello, world! </h1>
+<h1> Output </h1>
 
+<p>Input: </p> <p>{{ input_text }}</p>
+<p>Key: </p> <p>{{ key }}</p>
+<p>Cipher of Decipher: </p> <p>{{ operation }}</p>
+<p>Output: </p> <p>{{ output_text }}</p>
 {% endblock %}
