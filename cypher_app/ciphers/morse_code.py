@@ -72,6 +72,9 @@ class MorseCode:
           Returns:
               str: Text deciphered into English.
           """
+          if any(char.isalnum() for char in self.text):
+               return 'Morse code to decipher must not contain alpha-numeric text.'
+
           deciphered_text = ""
           for morse_code in self.text.split():
                if morse_code in self.morse_code_dict.values():
