@@ -15,8 +15,39 @@
 
   <div class="card-body">
     <form action="{{ request.path }}" method="post">
-        {% block card_body %}
-        {% endblock %}
+        <!-- {% block card_body %} -->
+        <!-- {% endblock %} -->
+
+        {% csrf_token %}
+
+        {% bootstrap_field form.text %}
+
+        {% if request.path == "/app/caesar_cipher/" %}
+            {% bootstrap_field form.key %}
+        {% endif %}
+
+        {% bootstrap_field form.operation %}
+
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">
+                Submit
+            </button>
+        {% endbuttons %}
+
+        <hr />
+
+        <ul class="list-group">
+          {% if output_text %}
+            <li class="list-group-item list-group-item-success">
+                {{ output_text }}
+            </li>
+          {% else %}
+            <li class="list-group-item list-group-item-primary">
+                Output text appears here.
+            </li>
+          {% endif %}
+        </ul>
+
     </form>
 
   </div>

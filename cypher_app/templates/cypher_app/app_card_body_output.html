@@ -3,10 +3,15 @@
 
 {% block card_body %}
 
-<h1> Output </h1>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">Input: {{ input_text }}</li>
 
-<p>Input: </p> <p>{{ input_text }}</p>
-<p>Key: </p> <p>{{ key }}</p>
-<p>Cipher of Decipher: </p> <p>{{ operation }}</p>
-<p>Output: </p> <p>{{ output_text }}</p>
+  {% if key %}
+  <li class="list-group-item">Key: {{ key }}</li>
+  {% endif %}
+
+  <li class="list-group-item">Cipher or Decipher: {{ operation }}</li>
+  <li class="list-group-item">Output: {{ output_text }}</li>
+</ul>
+
 {% endblock %}
