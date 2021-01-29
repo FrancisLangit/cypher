@@ -33,9 +33,6 @@ def app(request, cipher_choice):
 def app_output(request, form, cipher_choice):
 	context = {
 		'form': CipherTextForm(request.POST),
-		'input_text': form.cleaned_data['text'],
-		'key': form.cleaned_data['key'],
-		'operation': form.cleaned_data['operation'].title(),
 		'output_text': helpers.parse_text(cipher_choice, form),
 	}
 	return render(request, 'cypher_app/app.html', context)
