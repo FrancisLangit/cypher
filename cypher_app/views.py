@@ -24,7 +24,6 @@ def app(request, cipher_choice):
 		form = CipherTextForm(request.POST)
 		if form.is_valid():
 			output_text = helpers.parse_text(cipher_choice, form)
-			input_text = form.cleaned_data['text']
 			messages.add_message(request, messages.INFO, output_text)
 		return redirect('cypher_app:app', cipher_choice=cipher_choice)
 	context = {
@@ -32,6 +31,10 @@ def app(request, cipher_choice):
 		'is_mobile': helpers.mobile(request),
 	}
 	return render(request, 'cypher_app/app.html', context)
+
+
+def app_output(request, cipher_choice):
+	return HttpResponse("Hello, world.")
 
 
 def about(request):
