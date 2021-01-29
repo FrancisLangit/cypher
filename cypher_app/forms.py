@@ -8,9 +8,10 @@ class CipherTextForm(forms.Form):
 	)
 	key = forms.IntegerField(
 		label='Key', 
-		min_value=0, 
+		min_value=1, 
 		max_value=26, 
-		required=False
+		required=False,
+		initial=1,
 	)
 	operation = forms.ChoiceField(
 		label='Cipher or Decipher',

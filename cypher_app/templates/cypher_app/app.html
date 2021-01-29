@@ -35,14 +35,14 @@
         <hr />
 
         <ul class="list-group">
-          {% if output_text == 1 %}
+          {% if output_text.0 == 1 %}
             <li class="list-group-item list-group-item-danger">
-                Error! Please review input and try again.
+                {{ output_text.1 }}
             </li>
 
-          {% elif output_text %}
+          {% elif output_text.0 == 0 %}
             <li class="list-group-item list-group-item-success">
-                {{ output_text }}
+                {{ output_text.1 }}
             </li>
 
           {% else %}

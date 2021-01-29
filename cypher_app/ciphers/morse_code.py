@@ -58,8 +58,8 @@ class MorseCode:
                     else: 
                          cipher += '....... '
           except KeyError:
-               return 1
-          return cipher
+               return (1, f"Error. Cannot translate {e} to morse code.")
+          return (0, cipher)
 
 
      def decipher_split_section(self, split_section):
@@ -89,9 +89,9 @@ class MorseCode:
               str: Text deciphered into English.
           """
           if any(char.isalnum() for char in self.text):
-               return ("Morse code to decipher must not contain " 
-                       "alpha-numeric text.")
+               return (1, ("Morse code to decipher must not contain " 
+                       "alpha-numeric text."))
           deciphered_text = ""
           for split_section in self.text.split():
                deciphered_text += self.decipher_split_section(split_section)
-          return deciphered_text
+          return (0, deciphered_text)

@@ -51,9 +51,9 @@ class CaesarCipher:
             cipher = ""
             for i in range(len(self.text)):
                 cipher += self._cipher_char(self.text[i])
-            return cipher
+            return (0, cipher)
         else:
-            return f"Shift of {self.key} is over limit of {self.key_limit}."
+            return (1, f"Shift of {self.key} is over limit of {self.key_limit}.")
 
 
     def _decipher_char(self, char):
@@ -94,4 +94,4 @@ class CaesarCipher:
                 deciphered_text += self._decipher_char(char)
             else:
                 deciphered_text += char
-        return deciphered_text
+        return (0, deciphered_text)

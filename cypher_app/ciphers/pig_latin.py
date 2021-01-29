@@ -90,7 +90,7 @@ class PigLatin:
         Returns:
             str: Ciphered text.
         """
-        return self._output_text(self._cipher_word)
+        return self._output_text((0, self._cipher_word))
 
 
     def decipher(self):
@@ -102,4 +102,4 @@ class PigLatin:
         Returns:
             str: Deciphered text.
         """
-        return self._output_text(self._decipher_word)
+        return self._output_text((0, self._decipher_word))

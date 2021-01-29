@@ -23,7 +23,7 @@ class Binary:
 		Returns:
 		    str: Text ciphered into Binary
 		"""
-		return ' '.join(format(ord(char), 'b') for char in self.text)
+		return (0, ' '.join(format(ord(char), 'b') for char in self.text))
 
 
 	def decipher(self):
@@ -40,7 +40,7 @@ class Binary:
 			str: Text deciphered from Binary to ASCII text.
 		"""
 		try:
-			return ''.join(
-				[chr(int(binary, 2)) for binary in self.text.split(" ")])
+			return (0, ''.join(
+				[chr(int(binary, 2)) for binary in self.text.split(" ")]))
 		except ValueError:
-			return 1
+			return (1, 'Error. Could not decipher input into binary.')

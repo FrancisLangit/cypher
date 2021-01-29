@@ -31,7 +31,7 @@ def parse_text(cipher_choice, form):
 	"""
 	# Detect if no key input from user in /app/caesar_cipher page.
 	if cipher_choice == 'caesar_cipher' and not form.cleaned_data['key']:
-		return 'Error. No key input. Please indicate Caesar Cipher key.'
+		return (1, 'Error. No key input. Please indicate Caesar Cipher key.')
 
 	# Create class object based on user's chosen cipher.
 	cipher_object = _create_cipher_object(cipher_choice, form)
