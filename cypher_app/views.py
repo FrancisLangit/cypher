@@ -34,7 +34,7 @@ def app(request, cipher_choice):
 
 
 def app_output(request, cipher_choice):
-	return HttpResponse("Hello, world.")
+	return render(request, 'cypher_app/app_output.html')
 
 
 def about(request):
