@@ -62,6 +62,12 @@
   <div class="card-body">
     {% if request.path == '/app/binary/' %}
         {% include 'cypher_app/app_about_binary.html' %}
+    {% elif request.path == '/app/caesar_cipher/' %}
+        {% include 'cypher_app/app_about_caesar_cipher.html' %}
+    {% elif request.path == '/app/morse_code/' %}
+        {% include 'cypher_app/app_about_morse_code.html' %}
+    {% elif request.path == '/app/pig_latin/' %}
+        {% include 'cypher_app/app_about_pig_latin.html' %}
     {% endif %}
   </div>
 </div>
