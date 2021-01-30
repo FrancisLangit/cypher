@@ -58,4 +58,12 @@
 
 </div>
 
+<div class="card m-5">
+  <div class="card-body">
+    {% if request.path == '/app/binary/' %}
+        {% include 'cypher_app/app_about_binary.html' %}
+    {% endif %}
+  </div>
+</div>
+
 {% endblock %}
