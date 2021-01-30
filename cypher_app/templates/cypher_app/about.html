@@ -6,13 +6,20 @@
 	  <h1 class="display-4">
 	  	Cypher
 	  </h1>
+
 	  <p class="lead">
 	  	Cipher and decipher text using various algorithms.
 	  </p>
+
 	  <hr class="my-4">
+
 	  <p>
 	  	Currently released on GitHub as an open-source project under an MIT License. 
 	  </p>
+
+	   <a class="btn btn-primary btn-md" href="https://github.com/FrancisLangit/cypher" role="button">
+	   	Go to GitHub Repository
+	   </a>
 	</div>
 
 	<div class="card m-5">
@@ -24,16 +31,35 @@
 	    <p class="card-text">
 	    	Cypher is a Django-based web application written on Python 3. Visitors can make use of its features to encrypt English to various ciphers and vice-versa. It currently showcases ciphering algorithms that can translate to and from the following:
 	    	<ul>
-	    		<li>Binary</li>
-	    		<li>Caesar Cipher</li>
-	    		<li>Morse Code</li>
-	    		<li>Pig Latin</li>
+	    		<li>
+	    			<a href="{% url 'cypher_app:app' 'binary' %}">
+	    				Binary
+	    			</a>
+	    		</li>
+
+	    		<li>
+	    			<a href="{% url 'cypher_app:app' 'caesar_cipher' %}">
+	    				Caesar Cipher
+	    			</a>
+	    		</li>
+
+	    		<li>
+	    			<a href="{% url 'cypher_app:app' 'morse_code' %}">
+	    				Morse Code
+	    			</a>
+	    		</li>
+
+	    		<li>
+	    			<a href="{% url 'cypher_app:app' 'pig_latin' %}">
+	    				Pig Latin
+	    			</a>
+	    		</li>
 	    	</ul>
 	    </p>
 
 	    <h4 class="card-title">Can I contribute to the project?</h4>
 	    <p class="card-text">
-	    	You most definitely can. Please visit the project's repository on GitHub for more details. Within it you can learn more about its contributing guidelines. 
+	    	You most definitely can. Please visit the project's <a href="https://github.com/FrancisLangit/cypher"> repository on GitHub</a> for more details. You can learn more about its contributing guidelines there. 
 	    </p>
 	  </div>
 	</div>
