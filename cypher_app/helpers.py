@@ -63,6 +63,25 @@ def _create_cipher_object(cipher_choice, form):
 		return cipher_class(form.cleaned_data['text'])
 
 
+def _get_cipher_name(cipher_choice):
+	"""Returns a cipher's name based on cipher_choice value.
+
+	Args:
+		cipher_choice (str): Choice of cipher. Based on CIPHER_DICT keys.
+
+	Returns:
+		str: String of cipher name based on cipher_choice value.
+	"""
+	CIPHER_DICT = {
+		"binary": "Binary",
+		"caesar_cipher": "Caesar Cipher",
+		"morse_code": "Morse Code",
+		"pig_latin": "Pig Latin",
+	}
+	return CIPHER_DICT[cipher_choice]
+
+
+
 def mobile(request):
 	"""Returns True if the request object comes from a mobile device.
 
