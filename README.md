@@ -7,6 +7,7 @@ For those interested, [a live version of the web application is available on Her
 ![readme_gif_1](https://i.imgur.com/9GVWDqj.gif)
 
 ## Installation
+
 **Note:** This is for those that would like to be able to run the project locally and/or access its source code for contribution purposes. [A live version is available on Heroku](A live demo of the web application is deployed on Heroku.) for convenient access.
 
 1. Clone the repository or download it as a .zip file and extract it.
@@ -25,7 +26,13 @@ For those interested, [a live version of the web application is available on Her
    (cypher_venv) PS \cypher>
    ```
 
-3. To run the website locally, enter `python manage.py runserver`.
+3. Install the project's requirements on the virtual environment by entering `pip install -r requirements.txt`.
+
+   ```bash
+   (cypher_venv)cypher$ pip install -r requirements.txt
+   ```
+
+4. To run the website locally, enter `python manage.py runserver`.
 
    ```
    (cypher_venv)cypher$ python manage.py runserver
@@ -55,6 +62,3 @@ For those that would like to apply major changes to the repository, we'd like to
 ## License
 
 [MIT License](https://github.com/FrancisLangit/cypher/blob/master/LICENSE.txt)
-
-
-
