@@ -54,7 +54,7 @@ For those that would like to apply major changes to the repository, we'd like to
 
 ## License
 
-MIT License
+[MIT License](https://github.com/FrancisLangit/cypher/blob/master/LICENSE.txt)
 
 
 
