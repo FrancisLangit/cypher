@@ -1,12 +1,13 @@
-# Cypher
-![readme_gif_1](https://i.imgur.com/9GVWDqj.gif)
+![readme_banner](https://i.imgur.com/aZVdFXg.png)
 
 Cypher is a open-source web application written on Python 3 using the Django web framework. One can make use of its features to translate English to various ciphers and vice-versa. It currently showcases algorithms that can translate to and from Binary, a Caesar Cipher, Morse Code, and Pig Latin.
 
-###### For those interested, [a live version of the web application is available on Heroku.](https://cypher-web-app.herokuapp.com/)
+For those interested, [a live version of the web application is available on Heroku.](https://cypher-web-app.herokuapp.com/)
+
+![readme_gif_1](https://i.imgur.com/9GVWDqj.gif)
 
 ## Installation
-**Note:** This is for those that would like to be able to run the project locally and/or access its source code for contribution purposes. [A live version of it is available on Heroku](A live demo of the web application is deployed on Heroku.) for convenient access.
+**Note:** This is for those that would like to be able to run the project locally and/or access its source code for contribution purposes. [A live version is available on Heroku](A live demo of the web application is deployed on Heroku.) for convenient access.
 
 1. Clone the repository or download it as a .zip file and extract it.
 
