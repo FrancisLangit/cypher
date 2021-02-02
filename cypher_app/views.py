@@ -28,6 +28,7 @@ def app(request, cipher_choice):
 	if request.method == 'POST':
 		form = CipherTextForm(request.POST)
 		if form.is_valid():		
+			context['form'] = form
 			context['output_text'] = helpers.parse_text(cipher_choice, form)
 	return render(request, 'cypher_app/app.html', context)
 
