@@ -4,7 +4,7 @@ Cypher is a open-source web application written on Python 3 using the Django web
 
 For those interested, [a live version of the web application is available on Heroku.](https://cypher-web-app.herokuapp.com/)
 
-![readme_gif_1](https://i.imgur.com/9GVWDqj.gif)
+![readme_gif_1](https://i.imgur.com/2B1YmyD.gif)
 
 ## Installation
 
@@ -49,7 +49,7 @@ For those interested, [a live version of the web application is available on Her
 
 ## Usage
 
-![readme_gif_2](https://i.imgur.com/U38Sn3W.gif)
+![readme_gif_2](https://i.imgur.com/c8SzqDz.gif)
 
 The above is a demo of the Caesar Cipher utility of the website. In this case, users will need to input a string of text, a ciphering key, and choose whether to make a submission for ciphering or deciphering. The application then outputs a string that the user can use. The Binary, Morse Code, and Pig Latin utilities of the website follow the same usage pattern, just without the need to provide a key. 
 
