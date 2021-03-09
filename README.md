@@ -8,7 +8,7 @@ For those interested, [a live version of the web application is available on Her
 
 ## Installation
 
-**Note:** This is for those that would like to be able to run the project locally and/or access its source code for contribution purposes. [A live version is available on Heroku](A live demo of the web application is deployed on Heroku.) for convenient access.
+**Note:** This is for those that would like to be able to run the project locally and/or access its source code for contribution purposes. [A live version is available on Heroku](https://cypher-web-app.herokuapp.com/app/binary/) for convenient access.
 
 1. Clone the repository or download it as a .zip file and extract it.
 
